@@ -12,7 +12,9 @@
 
     <link type="image/png" sizes="16x16" rel="icon" href="{{ asset('storage') }}/favicon.svg">
 </head>
-<body>
+<body class="page">
+
+    @yield('content')
 
 </body>
 </html>
