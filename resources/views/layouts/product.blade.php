@@ -1,7 +1,5 @@
-
-
 <tr class="content__body_items">
-    <td class="content__body_item">mtokb2</td>
+    <td class="content__body_item"><button type="button" class="check__link btn-reset">mtokb2</button></td>
     <td class="content__body_item">MTOK-B2/216-1KT3645-K</td>
     <td class="content__body_item">Доступен</td>
     <td class="content__body_item">
@@ -10,7 +8,7 @@
     </td>
 </tr>
 <tr class="content__body_items">
-    <td class="content__body_item">mtokb2</td>
+    <td class="content__body_item"><<button type="button" class="check__link btn-reset">mtokb2</button></td>
     <td class="content__body_item">MTOK-B2/216-1KT3645-K</td>
     <td class="content__body_item">Не доступен</td>
     <td class="content__body_item">

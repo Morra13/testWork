@@ -196,6 +196,13 @@ a {
     color: var(--color-gray-dark);
 }
 
+.check__link {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 11px;
+    color: var(--color-gray-dark);
+}
+
 .content__body_item:nth-child(4n+1) {
     padding-left: 15px;
 }
@@ -279,17 +286,12 @@ a {
 }
 
 /*ADD*/
-.wrapper__popup {
+.add__wrapper_popup {
     display: none;
     position: absolute;
     top: 5%;
     left: 50%;
-    transform: translateY(-50%);
     transform: translateX(-50%);
-}
-
-.wrapper__popup_visible {
-    display: block;
 }
 
 .add__form {
@@ -446,4 +448,103 @@ a {
 
 .add__value {
     flex-direction: column;
+}
+
+/*Check*/
+.check__wrapper_popup {
+    display: none;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.check {
+    position: relative;
+    margin: 0 auto;
+    padding: 27px 5px 40px 12px;
+    flex-direction: column;
+    min-height: 387px;
+    width: 630px;
+    background-color: var(--color-dark);
+}
+
+.check__edit_link {
+    position: absolute;
+    right: 64px;
+    top: 24.5px;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(0, 0, 0, 0.40);
+}
+
+.check__edit {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+}
+
+.check__delete_link {
+    position: absolute;
+    right: 42px;
+    top: 24.5px;
+    height: 20px;
+    width: 20px;
+    background-color: rgba(0, 0, 0, 0.40);
+}
+
+.check__delete {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.check__exit {
+     position: absolute;
+     right: 5px;
+     top: 18px;
+     height: 30px;
+     width: 30px;
+ }
+
+.check__title {
+    margin: 0 0 30px 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 11px;
+    color: var(--color-white);
+}
+
+.check__left {
+    flex-direction: column;
+    width: 100px;
+}
+
+.check__right {
+    flex-direction: column;
+}
+
+.check__descr {
+    margin-bottom: 18px;
+}
+
+.check__name {
+    display: block;
+    width: 80px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 11px;
+    color: rgba(255, 255, 255, 0.70);
+}
+
+.check__value {
+    width: 250px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 11px;
+    color: var(--color-white);
+}
+
+.wrapper__popup_visible {
+    display: block;
 }

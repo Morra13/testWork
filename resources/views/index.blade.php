@@ -41,6 +41,7 @@
         </section>
     </main>
     @include('layouts.add')
+    @include('layouts.check')
 </div>
 
 @endsection

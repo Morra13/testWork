@@ -1,4 +1,4 @@
-<div class="wrapper__popup">
+<div class="add__wrapper_popup">
     <form action="/" class="add__form flex">
         <button type="button" class="add__exit_link btn-reset">
             <img src="{{ asset('storage') }}/img/exit.svg" alt="{{ __('main.exit') }}" class="add__exit">
