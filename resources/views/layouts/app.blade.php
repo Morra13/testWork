@@ -16,5 +16,6 @@
 
     @yield('content')
 
+    <script src="{{ asset('storage') }}/js/dropDown.js"></script>
 </body>
 </html>
