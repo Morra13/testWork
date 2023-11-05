@@ -1,8 +1,8 @@
-@extends('layouts.app', ['title' => __('main.addProduct')])
-
-@section('content')
+<div class="wrapper__popup">
     <form action="/" class="add__form flex">
-        <img src="{{ asset('storage') }}/img/exit.svg" alt="{{ __('main.exit') }}" class="add__exit">
+        <button type="button" class="add__exit_link btn-reset">
+            <img src="{{ asset('storage') }}/img/exit.svg" alt="{{ __('main.exit') }}" class="add__exit">
+        </button>
         <h2 class="add__title">{{ __('main.addProduct') }}</h2>
         <label for="article" class="add__label">{{ __('main.article') }}</label>
         <input type="text" class="add__input input-reset" id="article">
@@ -17,29 +17,29 @@
             </ul>
             <input type="text" name="status" value="available" class="dropdown__input_hidden">
         </div>
-
         <h3 class="add__subtitle">{{ __('main.attributes') }}</h3>
         <div class="add__link_div">
             <div id="attributes"></div>
-            <a href="#" onclick="addDiv()" class="add__link">{{ __('main.addAttribute') }}</a>
+            <button type="button" onclick="addDiv()" class="add__link btn-reset">{{ __('main.addAttribute') }}</button>
         </div>
         <div>
             <button class="add__btn btn-reset">{{ __('main.add') }}</button>
         </div>
     </form>
-    <script>
-        let i = 0;
-        function addDiv() {
-            i++;
-            var newdiv = document.createElement("div");
-            newdiv.innerHTML = "<div class='add__attributes flex' id='attributes"+i+"'><div class='add__name flex'><label for='name"+i+"' class='add__label'>{{ __('main.name') }}</label><input type='text' class='add__input add__input_attributes input-reset' id='name"+i+"'></div><div class='add__value flex'><label for='value"+i+"' class='add__label'>{{ __('main.value') }}</label><input type='text' class='add__input add__input_attributes input-reset' id='value"+i+"'></div><a href='#' onclick='deleteDiv(attributes"+i+")' class='add__trash'><img src='{{ asset('storage') }}/img/trash.svg' alt='{{ __('main.delete') }}' class='add__trash_img'></a></div>";
-            document.getElementById("attributes").appendChild(newdiv);
-            return false;
-        }
+</div>
+<script>
+    let i = 0;
 
-        function deleteDiv(div) {
-            div.remove()
-            return false;
-        }
-    </script>
-@endsection
+    function addDiv() {
+        i++;
+        var newdiv = document.createElement("div");
+        newdiv.innerHTML = "<div class='add__attributes flex' id='attributes"+i+"'><div class='add__name flex'><label for='name"+i+"' class='add__label'>{{ __('main.name') }}</label><input type='text' class='add__input add__input_attributes input-reset' id='name"+i+"'></div><div class='add__value flex'><label for='value"+i+"' class='add__label'>{{ __('main.value') }}</label><input type='text' class='add__input add__input_attributes input-reset' id='value"+i+"'></div><a href='#' onclick='deleteDiv(attributes"+i+")' class='add__trash'><img src='{{ asset('storage') }}/img/trash.svg' alt='{{ __('main.delete') }}' class='add__trash_img'></a></div>";
+        document.getElementById("attributes").appendChild(newdiv);
+        return false;
+    }
+
+    function deleteDiv(div) {
+        div.remove()
+        return false;
+    }
+</script>

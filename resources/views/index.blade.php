@@ -1,6 +1,7 @@
 @extends('layouts.app', ['title' => __('main.main')])
 
 @section('content')
+
 <div class="container">
     @include('layouts.nav')
     <header class="section header">
@@ -39,5 +40,7 @@
             </div>
         </section>
     </main>
+    @include('layouts.add')
 </div>
+
 @endsection
