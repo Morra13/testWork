@@ -294,6 +294,14 @@ a {
     transform: translateX(-50%);
 }
 
+.edit__wrapper_popup {
+    display: none;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 .add__form {
     position: relative;
     margin: 0 auto;

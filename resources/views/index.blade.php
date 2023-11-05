@@ -42,6 +42,7 @@
     </main>
     @include('layouts.add')
     @include('layouts.check')
+    @include('layouts.edit')
 </div>
 
 @endsection
