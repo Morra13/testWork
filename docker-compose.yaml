@@ -37,7 +37,7 @@ services:
 
     pgsql:
         image: postgres:latest
-        container_name: CORE_POSTGRESQL
+        container_name: CORE_PSQL
         restart: unless-stopped
         tty: true
         ports:
@@ -45,7 +45,7 @@ services:
         environment:
             POSTGRES_USER: root
             POSTGRES_PASSWORD: root
-            POSTGRES_DB: test
+            POSTGRES_DB: root
         networks:
             - app-network
         volumes:
