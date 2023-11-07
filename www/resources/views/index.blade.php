@@ -30,7 +30,9 @@
                             </tr>
                         </thead>
                         <tbody class="content__body">
-                            @include('layouts.product')
+                        @foreach($arProducts as $arProduct)
+                            @include('layouts.product', ['arProduct' => $arProduct])
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

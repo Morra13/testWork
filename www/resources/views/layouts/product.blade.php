@@ -1,18 +1,20 @@
+<?php
+    $arrData = json_decode($arProduct->data, true);
+?>
+
 <tr class="content__body_items">
-    <td class="content__body_item"><button type="button" class="check__link btn-reset">mtokb2</button></td>
-    <td class="content__body_item">MTOK-B2/216-1KT3645-K</td>
-    <td class="content__body_item">Доступен</td>
+    <td class="content__body_item"><button type="button" class="check__link btn-reset">{{ $arProduct->article }}</button></td>
+    <td class="content__body_item">{{ $arProduct->name }}</td>
+    <td class="content__body_item">{{ $arProduct->status }}</td>
     <td class="content__body_item">
-        <p class="content__body_color">{{ __('main.color') }}: черный</p>
-        <p class="content__body_size">{{ __('main.size') }}: L</p>
-    </td>
-</tr>
-<tr class="content__body_items">
-    <td class="content__body_item"><<button type="button" class="check__link btn-reset">mtokb2</button></td>
-    <td class="content__body_item">MTOK-B2/216-1KT3645-K</td>
-    <td class="content__body_item">Не доступен</td>
-    <td class="content__body_item">
-        <p class="content__body_color">{{ __('main.color') }}: серый</p>
-        <p class="content__body_size">{{ __('main.size') }}: XL</p>
+        @foreach($arrData as $key => $value)
+            @if(count($arrData) <= 1)
+                <p class="content__body_color">{{ $key . ' : ' . $value  }}</p>
+            @else
+                @foreach($value as $k => $v)
+                    <p class="content__body_color">{{ $k . ' : ' . $v  }}</p>
+                @endforeach
+            @endif
+        @endforeach
     </td>
 </tr>
