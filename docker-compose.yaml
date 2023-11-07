@@ -43,9 +43,9 @@ services:
         ports:
             - "5432:5432"
         environment:
-            POSTGRES_USER: root
-            POSTGRES_PASSWORD: root
-            POSTGRES_DB: root
+            POSTGRES_USER: user_root
+            POSTGRES_PASSWORD: password_root
+            POSTGRES_DB: db
         networks:
             - app-network
         volumes:
@@ -54,10 +54,10 @@ services:
 
 #Docker Networks
 networks:
-  app-network:
-    driver: bridge
+    app-network:
+        driver: bridge
 
 #Docker Volumes
 volumes:
-  dbdata:
-    driver: local
+    dbdata:
+        driver: local
