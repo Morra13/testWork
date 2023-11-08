@@ -8,7 +8,7 @@
     <title>{{ $title ?? config('app.name', 'title') }}</title>
 
     <link rel="stylesheet" href="{{ asset('storage') }}/css/normalize.css">
-    <link rel="stylesheet" href="{{ asset('storage') }}/css/style.css">
+    <link rel="stylesheet" href="{{ asset('storage') }}/css/style.css?{{rand()}}">
 
     <link type="image/png" sizes="16x16" rel="icon" href="{{ asset('storage') }}/favicon.svg">
 </head>
@@ -16,7 +16,8 @@
 
     @yield('content')
 
-    <script src="{{ asset('storage') }}/js/dropDown.js"></script>
-    <script src="{{ asset('storage') }}/js/popup.js"></script>
+    <script src="{{ asset('storage') }}/js/dropDown.js?{{rand()}}"></script>
+    <script src="{{ asset('storage') }}/js/popup.js?{{rand()}}"></script>
+    <script src="{{ asset('storage') }}/js/attribute.js?{{rand()}}"></script>
 </body>
 </html>
