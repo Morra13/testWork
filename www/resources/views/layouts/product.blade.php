@@ -7,14 +7,12 @@
     <td class="content__body_item">{{ $arProduct->name }}</td>
     <td class="content__body_item">{{ $arProduct->status }}</td>
     <td class="content__body_item">
-        @foreach($arrData as $key => $value)
-            @if(count($arrData) <= 1)
-                <p class="content__body_color">{{ $key . ' : ' . $value  }}</p>
-            @else
+        @if($arrData)
+            @foreach($arrData as $value)
                 @foreach($value as $k => $v)
                     <p class="content__body_color">{{ $k . ' : ' . $v  }}</p>
                 @endforeach
-            @endif
-        @endforeach
+            @endforeach
+        @endif
     </td>
 </tr>
