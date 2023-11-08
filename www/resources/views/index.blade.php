@@ -42,7 +42,7 @@
             </div>
         </section>
     </main>
-{{--    @include('layouts.add')--}}
+    @include('layouts.add')
 {{--    @include('layouts.check')--}}
 {{--    @include('layouts.edit')--}}
 </div>
