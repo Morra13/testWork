@@ -15,5 +15,3 @@ use App\Http\Controllers\PublicController;
 */
 
 Route::get('/', [PublicController::class, 'index'])->name(PublicController::ROUTE_INDEX);
-Route::get('/check', [PublicController::class, 'check'])->name(PublicController::ROUTE_CHECK);
-Route::get('/edit', [PublicController::class, 'edit'])->name(PublicController::ROUTE_EDIT);

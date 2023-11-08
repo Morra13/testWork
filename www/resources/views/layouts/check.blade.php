@@ -1,51 +1,34 @@
-@extends('layouts.app', ['title' => __('main.main')])
-
-@section('content')
-
-<div class="check__wrapper_darkening darkening">
-    <div class="check__wrapper_popup wrapper__popup_visible">
+<div class="check__wrapper_darkening">
+    <div class="check__wrapper_popup">
         <div class="check flex">
-            <a href="{{ route(App\Http\Controllers\PublicController::ROUTE_EDIT), $arProduct->id}}" class="check__edit_link">
+            <button type="submit" class="check__edit_link btn-reset">
                 <img src="{{ asset('storage') }}/img/edit.svg" alt="{{ __('main.edit') }}" class="check__edit">
-            </a>
-            <button type="button" class="check__delete_link btn-reset">
+            </button>
+            <form method="post" id="deleteProduct" action="{{ route(App\Http\Controllers\Api\ProductController::ROUTE_DELETE, '') }}">
+            <button type="submit" class="check__delete_link btn-reset">
                 <img src="{{ asset('storage') }}/img/trash.svg" alt="{{ __('main.delete') }}" class="check__delete">
             </button>
+            </form>
             <button type="button" class="check__exit_link btn-reset">
                 <img src="{{ asset('storage') }}/img/exit.svg" alt="{{ __('main.exit') }}" class="check__exit">
             </button>
             <h2 class="check__title">{{ __('Название продукта') }}</h2>
             <div class="check__descr flex">
                 <span class="check__name">{{ __('main.article') }}</span>
-                <span class="check__value">{{ $arProduct->article }}</span>
+                <span class="check__value" id="productArticle"></span>
             </div>
             <div class="check__descr flex">
                 <span class="check__name">{{ __('main.name') }}</span>
-                <span class="check__value">{{ $arProduct->name }}</span>
+                <span class="check__value" id="productName"></span>
             </div>
             <div class="check__descr flex">
                 <span class="check__name">{{ __('main.status') }}</span>
-                <span class="check__value">{{ $arProduct->status }}</span>
+                <span class="check__value" id="productStatus"></span>
             </div>
             <div class="check__descr flex">
-                <?php
-                $arrData = json_decode($arProduct->data, true);
-                ?>
                 <span class="check__name">{{ __('main.attributes') }}</span>
-                <div>
-                    @foreach($arrData as $key => $value)
-                        @if(count($arrData) <= 1)
-                            <span class="check__value">{{ $key . ' : ' . $value  }}</span>
-                        @else
-                            @foreach($value as $k => $v)
-                                <span class="check__value">{{ $k . ' : ' . $v  }}</span><br>
-                            @endforeach
-                        @endif
-                    @endforeach
-                </div>
+                <div id="span"></div>
             </div>
         </div>
     </div>
 </div>
-
-@endsection

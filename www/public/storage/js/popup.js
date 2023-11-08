@@ -13,23 +13,6 @@ addExitLink.addEventListener('click', function (){
     addWrapperDarkening.classList.remove('darkening')
 });
 
-const checkLinkAll = document.querySelectorAll('.check__link');
-const checkWrapperPopup = document.querySelector('.check__wrapper_popup');
-const checkExitLink = document.querySelector('.check__exit_link');
-const checkWrapperDarkening = document.querySelector('.check__wrapper_darkening')
-
-checkLinkAll.forEach(function (checkLink){
-    checkLink.addEventListener('click', function (){
-        checkWrapperPopup.classList.add('wrapper__popup_visible')
-        checkWrapperDarkening.classList.add('darkening')
-    });
-});
-
-checkExitLink.addEventListener('click', function (){
-    checkWrapperPopup.classList.remove('wrapper__popup_visible')
-    checkWrapperDarkening.classList.remove('darkening')
-});
-
 const checkEditLink = document.querySelector('.check__edit_link')
 const editWrapperPopup = document.querySelector('.edit__wrapper_popup');
 const editExitLink = document.querySelector('.edit__exit_link');
