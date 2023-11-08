@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('article')->unique();
             $table->string('name');
             $table->enum('status', ['available', 'unavailable']);
-            $table->jsonb('data');
+            $table->jsonb('data')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -16,7 +16,7 @@ class ProductController extends Controller
     const ROUTE_CREATE = 'api.product.create';
 
     /** @var string  */
-    const ROUTE_UPDATE = 'api.product.update';
+    const ROUTE_EDIT = 'api.product.edit';
 
     /** @var string */
     const ROUTE_DELETE = 'api.product.delete';
@@ -29,27 +29,29 @@ class ProductController extends Controller
      */
     public function create (Request $request)
     {
+        $arrJson = [];
         $obProduct = new Product();
 
         $arrKeys = explode(',' , substr($request->get('inputArrKeys'), 0, -1));
-
         foreach ($arrKeys as $value) {
-            $arrJson[] = [
-                $request->get('attributeName_'.$value) => $request->get('attributeValue_'.$value),
-            ];
+            if ($request->get('attributeName_'.$value) & $request->get('attributeValue_'.$value)) {
+                $arrJson[] = [
+                    $request->get('attributeName_'.$value) => $request->get('attributeValue_'.$value),
+                ];
+            }
         }
+        $json = $arrJson ? json_encode($arrJson) : null;
 
-        $json = json_encode($arrJson);
         $obProduct->article = $request->get('article');
         $obProduct->name = $request->get('name');
         $obProduct->status = $request->get('status');
-        $obProduct->data = $json;
+        $obProduct->data = $json ?? null;
         $obProduct->save();
 
         return redirect()->route(\App\Http\Controllers\PublicController::ROUTE_INDEX);
     }
 
-    public function update ()
+    public function edit (Request $request)
     {
         $obProduct = new Product();
     }
