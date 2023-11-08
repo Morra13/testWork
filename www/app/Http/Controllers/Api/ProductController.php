@@ -53,7 +53,28 @@ class ProductController extends Controller
 
     public function edit (Request $request)
     {
-        $obProduct = new Product();
+        $obProduct = (new Product())
+            ->where('id', (int) $request->get('id'))
+            ->first()
+        ;
+
+        $arrKeys = explode(',' , substr($request->get('inputArrKeys'), 0, -1));
+        foreach ($arrKeys as $value) {
+            if ($request->get('attributeName_'.$value) & $request->get('attributeValue_'.$value)) {
+                $arrJson[] = [
+                    $request->get('attributeName_'.$value) => $request->get('attributeValue_'.$value),
+                ];
+            }
+        }
+        $json = $arrJson ? json_encode($arrJson) : null;
+
+        $obProduct->article = $request->get('article');
+        $obProduct->name = $request->get('name');
+        $obProduct->status = $request->get('status');
+        $obProduct->data = $json ?? null;
+        $obProduct->update();
+
+        return redirect()->route(\App\Http\Controllers\PublicController::ROUTE_INDEX);
     }
 
     public function delete ()

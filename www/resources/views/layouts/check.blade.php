@@ -5,7 +5,7 @@
 <div class="check__wrapper_darkening darkening">
     <div class="check__wrapper_popup wrapper__popup_visible">
         <div class="check flex">
-            <a href="{{ route(App\Http\Controllers\PublicController::ROUTE_EDIT) }}" class="check__edit_link">
+            <a href="{{ route(App\Http\Controllers\PublicController::ROUTE_EDIT), $arProduct->id}}" class="check__edit_link">
                 <img src="{{ asset('storage') }}/img/edit.svg" alt="{{ __('main.edit') }}" class="check__edit">
             </a>
             <button type="button" class="check__delete_link btn-reset">

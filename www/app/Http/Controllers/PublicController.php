@@ -46,16 +46,25 @@ class PublicController extends Controller
         );
     }
 
-    public function edit ()
+    public function edit (int $id)
     {
-        $obProducts = new Product();
+        $obProducts = (new Product())
+            ->where('id', $id)
+            ->first()
+        ;
 
-        $arProduct = $obProducts::all()->first();
+        $obProducts->data = json_decode($obProducts->data, true);
+
+        foreach ($obProducts->data as $key => $value) {
+            $arKeys[] = $key . ",";
+        }
+
+        $obProducts->keys =  implode($arKeys);
 
         return view(
             'layouts.edit',
             [
-                'arProduct' => $arProduct,
+                'arProduct' => $obProducts,
             ]
         );
     }

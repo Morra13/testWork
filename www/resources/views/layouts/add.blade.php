@@ -22,7 +22,6 @@
             <div class="add__link_div">
                 <div id="attributes"></div>
                 <input type="hidden" id="inputArrKeys" name="inputArrKeys" value="">
-                <input class="count" type="hidden" value="0">
                 <button type="button" onclick="addDiv()" class="add__link btn-reset">{{ __('main.addAttribute') }}</button>
             </div>
             <div>
