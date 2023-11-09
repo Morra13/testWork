@@ -65,7 +65,8 @@ class ProductController extends Controller
             ->first()
         ;
 
-        $arrKeys = explode(',' , substr($request->get('inputArrKeys'), 0, -1));
+        $arrKeys = explode(',' , substr($request->get('editInputArrKeys'), 0, -1));
+
         foreach ($arrKeys as $value) {
             if ($request->get('attributeName_'.$value) & $request->get('attributeValue_'.$value)) {
                 $arrJson[] = [

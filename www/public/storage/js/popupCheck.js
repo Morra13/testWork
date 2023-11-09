@@ -11,12 +11,14 @@ checkLinkAll.forEach(function (checkLink){
         document.querySelector('#productArticle').innerHTML = this.getAttribute('data-article');
         document.querySelector('#productStatus').innerHTML = this.getAttribute('data-status') === 'available' ? 'Доступен' : 'Не доступен';
         document.querySelector('#deleteProduct').action = document.querySelector('#deleteProduct').action + '/' + this.getAttribute('data-id');
-        let arrData = JSON.parse(this.getAttribute('data-data'));
-        arrData.forEach((array, key) => {
-            let newSpan = document.createElement("span");
-            newSpan.innerHTML = "<span class='check__value' id='productAttributes_" + key + "'>" + Object.keys(array)[0] + " : " + Object.values(array)[0] + "</span><br>";
-            document.getElementById("span").appendChild(newSpan);
-        })
+        if (this.getAttribute('data-data')) {
+            let arrData = JSON.parse(this.getAttribute('data-data'));
+            arrData.forEach((array, key) => {
+                let newSpan = document.createElement("span");
+                newSpan.innerHTML = "<span class='check__value' id='productAttributes_" + key + "'>" + Object.keys(array)[0] + " : " + Object.values(array)[0] + "</span><br>";
+                document.getElementById("span").appendChild(newSpan);
+            })
+        }
         checkWrapperPopup.classList.add('wrapper__popup_visible')
         checkWrapperDarkening.classList.add('darkening')
         editData.setAttribute('data-id', this.getAttribute('data-id'))

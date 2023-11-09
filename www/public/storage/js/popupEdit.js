@@ -11,13 +11,15 @@ checkEditLink.addEventListener('click', function (){
     document.querySelector('#productEditArticle').value = editData.dataset['article'];
     document.querySelector('#productEditStatusVisible').innerHTML = editData.dataset['status'] === 'available' ? 'Доступен' : 'Не доступен';
     document.querySelector('#productEditStatusValue').value = editData.dataset['status'];
-    let arrData = JSON.parse(editData.dataset['data']);
-    arrData.forEach((array, key) => {
-        let newDiv = document.createElement("div");
-        newDiv.innerHTML = "<div class='add__attributes flex' id='attributes_"+key+"'><div class='add__name flex'><label for='attributeName_"+key+"' class='add__label'>Название</label><input type='text' class='add__input add__input_attributes input-reset' id='attributeName_"+key+"' name='attributeName_"+key+"' value='" + Object.keys(array)[0] + "'></div><div class='add__value flex'><label for='attributeValue_"+key+"' class='add__label'>Значение</label><input type='text' class='add__input add__input_attributes input-reset' id='attributeValue_"+key+"' name='attributeValue_"+key+"' value='" + Object.values(array)[0] + "'></div><a href='#' onclick='deleteDivEdit(attributes_"+key+")' class='add__trash'><img src='https://smf.com.ge/storage/img/trash.svg' alt='Удалить' class='add__trash_img'></a></div>";
-        document.getElementById("editAttributes").appendChild(newDiv);
-        editInputArrKeys.value = editInputArrKeys.value + key + ',';
-    })
+    if (editData.dataset['data']) {
+        let arrData = JSON.parse(editData.dataset['data']);
+        arrData.forEach((array, key) => {
+            let newDiv = document.createElement("div");
+            newDiv.innerHTML = "<div class='add__attributes flex' id='attributes_"+key+"'><div class='add__name flex'><label for='attributeName_"+key+"' class='add__label'>Название</label><input type='text' class='add__input add__input_attributes input-reset' id='attributeName_"+key+"' name='attributeName_"+key+"' value='" + Object.keys(array)[0] + "'></div><div class='add__value flex'><label for='attributeValue_"+key+"' class='add__label'>Значение</label><input type='text' class='add__input add__input_attributes input-reset' id='attributeValue_"+key+"' name='attributeValue_"+key+"' value='" + Object.values(array)[0] + "'></div><a href='#' onclick='deleteDivEdit(attributes_"+key+")' class='add__trash'><img src='https://smf.com.ge/storage/img/trash.svg' alt='Удалить' class='add__trash_img'></a></div>";
+            document.getElementById("editAttributes").appendChild(newDiv);
+            editInputArrKeys.value = editInputArrKeys.value + key + ',';
+        })
+    }
     editWrapperPopup.classList.add('wrapper__popup_visible')
     editWrapperDarkening.classList.add('darkening')
 });
