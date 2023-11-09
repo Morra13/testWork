@@ -59,6 +59,7 @@ class ProductController extends Controller
      */
     public function edit (Request $request)
     {
+        $arrJson = [];
         $obProduct = (new Product())
             ->where('id', (int) $request->get('id'))
             ->first()

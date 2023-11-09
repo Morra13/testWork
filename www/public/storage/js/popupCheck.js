@@ -2,9 +2,11 @@ const checkLinkAll = document.querySelectorAll('.check__link');
 const checkExitLink = document.querySelector('.check__exit_link');
 const checkWrapperPopup = document.querySelector('.check__wrapper_popup');
 const checkWrapperDarkening = document.querySelector('.check__wrapper_darkening')
+const editData = document.querySelector('#editData');
 
 checkLinkAll.forEach(function (checkLink){
     checkLink.addEventListener('click', function (){
+        document.querySelector('#checkProductNameTitle').innerText = this.getAttribute('data-name');
         document.querySelector('#productName').innerHTML = this.getAttribute('data-name');
         document.querySelector('#productArticle').innerHTML = this.getAttribute('data-article');
         document.querySelector('#productStatus').innerHTML = this.getAttribute('data-status') === 'available' ? 'Доступен' : 'Не доступен';
@@ -17,6 +19,11 @@ checkLinkAll.forEach(function (checkLink){
         })
         checkWrapperPopup.classList.add('wrapper__popup_visible')
         checkWrapperDarkening.classList.add('darkening')
+        editData.setAttribute('data-id', this.getAttribute('data-id'))
+        editData.setAttribute('data-name', this.getAttribute('data-name'))
+        editData.setAttribute('data-article', this.getAttribute('data-article'))
+        editData.setAttribute('data-status', this.getAttribute('data-status'));
+        editData.setAttribute('data-data', this.getAttribute('data-data'))
     });
 });
 
