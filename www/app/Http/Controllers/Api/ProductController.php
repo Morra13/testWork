@@ -51,6 +51,12 @@ class ProductController extends Controller
         return redirect()->route(\App\Http\Controllers\PublicController::ROUTE_INDEX);
     }
 
+    /**
+     * Изменение продукта
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function edit (Request $request)
     {
         $obProduct = (new Product())
@@ -77,8 +83,17 @@ class ProductController extends Controller
         return redirect()->route(\App\Http\Controllers\PublicController::ROUTE_INDEX);
     }
 
-    public function delete ()
+    /**
+     * Удаление продукта
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function delete (int $id)
     {
-        $obProduct = new Product();
+        (new Product())->where('id', (int) $id)->first()->delete();
+
+        return redirect()->route(\App\Http\Controllers\PublicController::ROUTE_INDEX);
+
     }
 }

@@ -19,6 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/create', [ProductController::class, 'create'])->name(ProductController::ROUTE_CREATE);
-Route::post('/edit',   [ProductController::class, 'edit'])  ->name(ProductController::ROUTE_EDIT);
-Route::post('/delete', [ProductController::class, 'delete'])->name(ProductController::ROUTE_DELETE);
+Route::post('/create',      [ProductController::class, 'create'])->name(ProductController::ROUTE_CREATE);
+Route::post('/edit',        [ProductController::class, 'edit'])  ->name(ProductController::ROUTE_EDIT);
+Route::post('/delete/{id}', [ProductController::class, 'delete'])->name(ProductController::ROUTE_DELETE);
