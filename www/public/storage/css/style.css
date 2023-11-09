@@ -565,3 +565,50 @@ a {
     left: 0;
     background: rgba(102, 102, 102, 0.5);
 }
+
+/*Auth + register*/
+.auth__label {
+    margin-bottom: 8px;
+    flex-direction: column;
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 11px;
+    color: var(--color-white);
+}
+
+.auth__exit {
+    position: absolute;
+    right: 5px;
+    top: 18px;
+    height: 30px;
+    width: 30px;
+}
+
+.auth__wrapper_popup {
+    display: none;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.auth__input {
+    margin-bottom: 13px;
+    padding: 10px 8px 9px 8px;
+    max-width: 472px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 300;
+    line-height: 11px;
+    background-color: var(--color-white);
+}
+
+.auth__btn {
+    padding: 9px 42px 9px 42px;
+    border-radius: 5px;
+    color: var(--color-white);
+    background-color: var(--color-sky);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 11px;
+}

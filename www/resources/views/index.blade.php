@@ -13,7 +13,14 @@
                     </li>
                 </ul>
             </nav>
-            <a href="" class="header__auth">{{ __('main.auth') }}</a>
+            <div>
+                @if(auth()->user())
+                    <span class="header__auth">{{ auth()->user() }}</span>
+                @else
+                    <button class="auth__btn btn-reset" id="buttonAuth">{{ __('main.auth') }}</button>
+                    <button class="auth__btn btn-reset" id="buttonReg">{{ __('main.register') }}</button>
+                @endif
+            </div>
         </div>
     </header>
     <main class="main">
@@ -45,6 +52,8 @@
     @include('layouts.add')
     @include('layouts.check')
     @include('layouts.edit')
+    @include('auth')
+    @include('reg')
 </div>
 
 @endsection
