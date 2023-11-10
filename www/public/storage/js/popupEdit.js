@@ -11,7 +11,7 @@ checkEditLink.addEventListener('click', function (){
     document.querySelector('#productEditName').value = editData.dataset['name'];
     document.querySelector('#productEditArticle').value = editData.dataset['article'];
     if (!admin) {
-        document.querySelector('#productEditArticle').disabled = true;
+        document.querySelector('#productEditArticle').readOnly = true;
     }
     document.querySelector('#productEditStatusVisible').innerHTML = editData.dataset['status'] === 'available' ? 'Доступен' : 'Не доступен';
     document.querySelector('#productEditStatusValue').value = editData.dataset['status'];
