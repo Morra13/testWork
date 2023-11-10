@@ -11,7 +11,7 @@
         >{{ $arProduct->article }}</button>
     </td>
     <td class="content__body_item">{{ $arProduct->name }}</td>
-    <td class="content__body_item">{{ $arProduct->status }}</td>
+    <td class="content__body_item">{{ __('main.' . $arProduct->status) }}</td>
     <td class="content__body_item">
         @if($arProduct->arData)
             @foreach($arProduct->arData as $value)

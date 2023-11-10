@@ -6,9 +6,11 @@
             </button>
             <h2 class="add__title">{{ __('main.addProduct') }}</h2>
             <label for="article" class="add__label">{{ __('main.article') }}</label>
-            <input type="text" class="add__input input-reset" id="article" name="article">
+            <input type="text" class="add__input input-reset" id="addArticle" name="article">
+            <span style="color: red" id="articleCreateError"></span>
             <label for="name" class="add__label">{{ __('main.name') }}</label>
-            <input type="text" class="add__input input-reset" id="name" name="name">
+            <input type="text" class="add__input input-reset" id="addName" name="name">
+            <span style="color: red" id="nameCreateError"></span>
             <label for="status" class="add__label flex">{{ __('main.status') }}</label>
             <div class="dropdown">
                 <button class="dropdown__button" name="status" type="button">{{ __('main.available') }}</button>

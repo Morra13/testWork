@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class ProductController
@@ -25,10 +27,19 @@ class ProductController extends Controller
      * Создание продукта
      *
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function create (Request $request)
+    public function create (Request $request): RedirectResponse
     {
+        $validator = Validator::make($request->all(), [
+            'name'      => ['required', 'min:10'],
+            'article'   => ['required', 'unique:products', 'regex:/^[A-Za-z0-9]+$/'],
+        ]);
+
+        if (!empty($validator->errors()->messages())) {
+            return redirect(\App\Http\Controllers\PublicController::ROUTE_INDEX)->withErrors($validator, 'create');
+        }
+
         $arrJson = [];
         $obProduct = new Product();
 
@@ -48,16 +59,16 @@ class ProductController extends Controller
         $obProduct->data = $json ?? null;
         $obProduct->save();
 
-        return redirect()->route(\App\Http\Controllers\PublicController::ROUTE_INDEX);
+        return redirect(\App\Http\Controllers\PublicController::ROUTE_INDEX);
     }
 
     /**
      * Изменение продукта
      *
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function edit (Request $request)
+    public function edit (Request $request): RedirectResponse
     {
         $arrJson = [];
         $obProduct = (new Product())
@@ -89,9 +100,9 @@ class ProductController extends Controller
      * Удаление продукта
      *
      * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function delete (int $id)
+    public function delete (int $id): RedirectResponse
     {
         (new Product())->where('id', (int) $id)->first()->delete();
 

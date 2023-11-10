@@ -11,10 +11,7 @@
                     <li class="header__item">
                         {{ __('main.products') }}
                     </li>
-
-
                 </ul>
-
             </nav>
             @if($status == 'available')
                 <a href="{{ route(\App\Http\Controllers\PublicController::ROUTE_INDEX) }}" class="auth__btn">{{ __('main.getAll') }}</a>
@@ -53,10 +50,15 @@
                         @endforeach
                         </tbody>
                     </table>
-                    <input type="hidden" id="admin" data-admin="{{auth()->user()->isAdmin()}}">
+                    @if(auth()->user())
+                        <input type="hidden" id="admin" data-admin="{{ auth()->user()->isAdmin() }}">
+                    @else
+                        <input type="hidden" id="admin" data-admin="0">
+                    @endif
                 </div>
                 <div class="content__right">
                     <button class="content__btn btn-reset">{{ __('main.add') }}</button>
+                    <input type="hidden" id="dataErrors" data-createErrors="{{$errors->create}}">
                 </div>
             </div>
         </section>
