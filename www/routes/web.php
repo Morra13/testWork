@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,6 @@ use App\Http\Controllers\PublicController;
 |
 */
 
-Route::get('/', [PublicController::class, 'index'])->name(PublicController::ROUTE_INDEX);
+Route::get('/',         [PublicController::class, 'index'])     ->name(PublicController::ROUTE_INDEX);
+Route::get('/register', [PublicController::class, 'register'])  ->name(PublicController::ROUTE_REGISTER);
+Route::get('/auth',     [PublicController::class, 'auth'])      ->name(PublicController::ROUTE_AUTH);

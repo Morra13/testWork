@@ -15,10 +15,13 @@
             </nav>
             <div>
                 @if(auth()->user())
-                    <span class="header__auth">{{ auth()->user() }}</span>
+                    <span class="header__auth">{{ auth()->user()->name }}</span>
+                    <span class="header__auth" style="color: red">{{ auth()->user()->role }}</span>
+                    <a href="{{ route(\App\Http\Controllers\Auth\RegisterController::ROUTE_CHANGE_ROLE) }}" class="auth__btn">{{ __('main.be') .' ' . __('main.'. (auth()->user()->role == 'admin' ? 'user' : 'admin')) }}</a>
+                    <a href="{{ route(\App\Http\Controllers\Auth\AuthController::ROUTE_LOGOUT) }}" class="auth__btn">{{ __('main.logout') }}</a>
                 @else
-                    <button class="auth__btn btn-reset" id="buttonAuth">{{ __('main.auth') }}</button>
-                    <button class="auth__btn btn-reset" id="buttonReg">{{ __('main.register') }}</button>
+                    <a href="{{route(\App\Http\Controllers\PublicController::ROUTE_AUTH)}}" class="auth__btn" id="buttonAuth">{{ __('main.auth') }}</a>
+                    <a href="{{route(\App\Http\Controllers\PublicController::ROUTE_REGISTER)}}" class="auth__btn" id="buttonReg">{{ __('main.register') }}</a>
                 @endif
             </div>
         </div>
@@ -52,8 +55,6 @@
     @include('layouts.add')
     @include('layouts.check')
     @include('layouts.edit')
-    @include('auth')
-    @include('reg')
 </div>
 
 @endsection

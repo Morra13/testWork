@@ -10,6 +10,17 @@ class PublicController extends Controller
     /** @var string  */
     const ROUTE_INDEX = 'index';
 
+    /** @var string  */
+    const ROUTE_REGISTER = 'register';
+
+    /** @var string  */
+    const ROUTE_AUTH = 'auth';
+
+    /**
+     * Главная страница
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function index ()
     {
         $obProducts = new Product();
@@ -29,4 +40,25 @@ class PublicController extends Controller
             ]
         );
     }
+
+    /**
+     * Страница регистрации
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function register ()
+    {
+        return view('register');
+    }
+
+    /**
+     * Страница авторизации
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function auth ()
+    {
+        return view('auth');
+    }
+
 }

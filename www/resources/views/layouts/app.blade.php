@@ -8,7 +8,7 @@
     <title>{{ $title ?? config('app.name', 'title') }}</title>
 
     <link rel="stylesheet" href="{{ asset('storage') }}/css/normalize.css">
-    <link rel="stylesheet" href="{{ asset('storage') }}/css/style.css?{{rand()}}">
+    <link rel="stylesheet" href="{{ asset('storage') }}/css/style.css">
 
     <link type="image/png" sizes="16x16" rel="icon" href="{{ asset('storage') }}/favicon.svg">
 </head>

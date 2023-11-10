@@ -26,4 +26,8 @@ return [
     'email'             => 'Email',
     'password'          => 'Пароль',
     'passwordConfirm'   => 'Подтвердить пароль',
+    'logout'            => 'Выйти',
+    'be'                => 'Стать',
+    'admin'             => 'админом',
+    'user'              => 'юзером',
 ];
