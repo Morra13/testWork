@@ -21,22 +21,15 @@ class PublicController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index ()
+    public function index ( string $status = null)
     {
-        $obProducts = new Product();
-
-        $arProducts = $obProducts->get();
-
-        foreach ($arProducts as $value) {
-            if ($value->data){
-                $value->arData = json_decode($value->data, true);
-            }
-        }
+        $arProducts = $status == 'available'  ? (new Product())->getAvailableProducts() : (new Product())->getAllProducts();
 
         return view(
             'index',
             [
                 'arProducts' => $arProducts,
+                'status' => $status,
             ]
         );
     }

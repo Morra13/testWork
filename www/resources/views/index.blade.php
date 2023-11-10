@@ -11,8 +11,16 @@
                     <li class="header__item">
                         {{ __('main.products') }}
                     </li>
+
+
                 </ul>
+
             </nav>
+            @if($status == 'available')
+                <a href="{{ route(\App\Http\Controllers\PublicController::ROUTE_INDEX) }}" class="auth__btn">{{ __('main.getAll') }}</a>
+            @else
+                <a href="{{ route(\App\Http\Controllers\PublicController::ROUTE_INDEX, 'available') }}" class="auth__btn">{{ __('main.getAvailable') }}</a>
+            @endif
             <div>
                 @if(auth()->user())
                     <span class="header__auth">{{ auth()->user()->name }}</span>

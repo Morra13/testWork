@@ -44,4 +44,34 @@ class Product extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Получение всех товаров
+     * @return mixed
+     */
+    public function getAllProducts () {
+        $arProducts = $this->get();
+        foreach ($arProducts as $value) {
+            if ($value->data){
+                $value->arData = json_decode($value->data, true);
+            }
+        }
+
+        return $arProducts;
+    }
+
+    /**
+     * Получение доступных товаров
+     * @return mixed
+     */
+    public function getAvailableProducts () {
+        $arProducts = $this->get()->where('status', 'available');
+        foreach ($arProducts as $value) {
+            if ($value->data){
+                $value->arData = json_decode($value->data, true);
+            }
+        }
+
+        return $arProducts;
+    }
 }
