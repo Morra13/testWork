@@ -1,14 +1,18 @@
-const checkEditLink = document.querySelector('.check__edit_link')
+const checkEditLink = document.querySelector('.check__edit_link');
 const editWrapperPopup = document.querySelector('.edit__wrapper_popup');
 const editExitLink = document.querySelector('.edit__exit_link');
-const editWrapperDarkening = document.querySelector('.edit__wrapper_darkening')
+const editWrapperDarkening = document.querySelector('.edit__wrapper_darkening');
 let editInputArrKeys = document.querySelector('#editInputArrKeys');
+const admin = document.querySelector('#admin').dataset['admin'];
 
 checkEditLink.addEventListener('click', function (){
     document.querySelector('#editProductNameTitle').innerText = 'Редактировать ' + editData.dataset['name'];
     document.querySelector('#productEditId').value = editData.dataset['id'];
     document.querySelector('#productEditName').value = editData.dataset['name'];
     document.querySelector('#productEditArticle').value = editData.dataset['article'];
+    if (!admin) {
+        document.querySelector('#productEditArticle').disabled = true;
+    }
     document.querySelector('#productEditStatusVisible').innerHTML = editData.dataset['status'] === 'available' ? 'Доступен' : 'Не доступен';
     document.querySelector('#productEditStatusValue').value = editData.dataset['status'];
     if (editData.dataset['data']) {

@@ -53,6 +53,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    <input type="hidden" id="admin" data-admin="{{auth()->user()->isAdmin()}}">
                 </div>
                 <div class="content__right">
                     <button class="content__btn btn-reset">{{ __('main.add') }}</button>
