@@ -49,7 +49,8 @@ class RegisterController extends Controller
     public function changeRole ()
     {
        $user = Auth::user();
-       $user->role = $user->role == 'admin' ? 'user' : 'admin';
+
+       $user->role = $user->isAdmin() ? 'user' : 'admin';
        $user->save();
 
         return redirect()->route(\App\Http\Controllers\PublicController::ROUTE_INDEX);
