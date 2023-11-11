@@ -4,6 +4,9 @@ const editExitLink = document.querySelector('.edit__exit_link');
 const editWrapperDarkening = document.querySelector('.edit__wrapper_darkening');
 let editInputArrKeys = document.querySelector('#editInputArrKeys');
 const admin = document.querySelector('#admin').dataset['admin'];
+const dataErrorsEdit = document.querySelector('#dataErrorsEdit');
+const nameEditError = document.querySelector('#nameEditError');
+const articleEditError = document.querySelector('#articleEditError');
 
 checkEditLink.addEventListener('click', function (){
     document.querySelector('#editProductNameTitle').innerText = 'Редактировать ' + editData.dataset['name'];
@@ -17,23 +20,45 @@ checkEditLink.addEventListener('click', function (){
     document.querySelector('#productEditStatusValue').value = editData.dataset['status'];
     if (editData.dataset['data']) {
         let arrData = JSON.parse(editData.dataset['data']);
-        arrData.forEach((array, key) => {
-            let newDiv = document.createElement("div");
-            newDiv.innerHTML = "<div class='add__attributes flex' id='attributes_"+key+"'><div class='add__name flex'><label for='attributeName_"+key+"' class='add__label'>Название</label><input type='text' class='add__input add__input_attributes input-reset' id='attributeName_"+key+"' name='attributeName_"+key+"' value='" + Object.keys(array)[0] + "'></div><div class='add__value flex'><label for='attributeValue_"+key+"' class='add__label'>Значение</label><input type='text' class='add__input add__input_attributes input-reset' id='attributeValue_"+key+"' name='attributeValue_"+key+"' value='" + Object.values(array)[0] + "'></div><a href='#' onclick='deleteDivEdit(attributes_"+key+")' class='add__trash'><img src='https://smf.com.ge/storage/img/trash.svg' alt='Удалить' class='add__trash_img'></a></div>";
-            document.getElementById("editAttributes").appendChild(newDiv);
-            editInputArrKeys.value = editInputArrKeys.value + key + ',';
-        })
+        if (arrData.length > 0) {
+            arrData.forEach((array, key) => {
+                let newDiv = document.createElement("div");
+                newDiv.innerHTML = "<div class='add__attributes flex' id='attributes_"+key+"'><div class='add__name flex'><label for='attributeName_"+key+"' class='add__label'>Название</label><input type='text' class='add__input add__input_attributes input-reset' id='attributeName_"+key+"' name='attributeName_"+key+"' value='" + Object.keys(array)[0] + "'></div><div class='add__value flex'><label for='attributeValue_"+key+"' class='add__label'>Значение</label><input type='text' class='add__input add__input_attributes input-reset' id='attributeValue_"+key+"' name='attributeValue_"+key+"' value='" + Object.values(array)[0] + "'></div><a href='#' onclick='deleteDivEdit(attributes_"+key+")' class='add__trash'><img src='https://smf.com.ge/storage/img/trash.svg' alt='Удалить' class='add__trash_img'></a></div>";
+                document.getElementById("editAttributes").appendChild(newDiv);
+                editInputArrKeys.value = editInputArrKeys.value + key + ',';
+            })
+        }
     }
-    editWrapperPopup.classList.add('wrapper__popup_visible')
-    editWrapperDarkening.classList.add('darkening')
+    editWrapperPopup.classList.add('wrapper__popup_visible');
+    editWrapperDarkening.classList.add('darkening');
 });
 
+if (dataErrorsEdit.dataset['editerrors'].length > 2) {
+    let errorEdit = JSON.parse(dataErrorsEdit.dataset['editerrors']);
+    editData.dataset['name'] = errorEdit['productName'][0];
+    editData.dataset['article'] = errorEdit['productArticle'][0];
+    editData.dataset['status'] = errorEdit['productStatus'][0];
+    editData.dataset['data'] = errorEdit['productData'][0];
+    checkEditLink.click();
+    let nameCreateError = document.querySelector('#nameEditError');
+    if (errorEdit['name']) {
+        nameEditError.innerHTML = errorEdit['name'][0];
+    }
+    let articleCreateError = document.querySelector('#articleEditError');
+    if (errorEdit['article']) {
+        articleEditError.innerHTML = errorEdit['article'][0];
+    }
+}
+
 editExitLink.addEventListener('click', function (){
-    editWrapperPopup.classList.remove('wrapper__popup_visible')
-    editWrapperDarkening.classList.remove('darkening')
+    editWrapperPopup.classList.remove('wrapper__popup_visible');
+    editWrapperDarkening.classList.remove('darkening');
     editInputArrKeys.value = '';
     document.querySelector('#editProductNameTitle').innerText = '';
     document.getElementById("editAttributes").innerHTML  = '';
+    nameEditError.innerHTML = '';
+    articleEditError.innerHTML = '';
+    editData.dataset['data'] = '';
 });
 
 let maxKey = 0;

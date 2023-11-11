@@ -58,14 +58,15 @@
                 </div>
                 <div class="content__right">
                     <button class="content__btn btn-reset">{{ __('main.add') }}</button>
-                    <input type="hidden" id="dataErrors" data-createErrors="{{$errors->create}}">
                 </div>
             </div>
         </section>
     </main>
     @include('layouts.add')
+    <input type="hidden" id="dataErrorsCreate" data-createErrors="{{$errors->create}}">
     @include('layouts.check')
     @include('layouts.edit')
+    <input type="hidden" id="dataErrorsEdit" data-editErrors="{{$errors->edit}}">
 </div>
 
 @endsection

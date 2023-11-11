@@ -2,7 +2,7 @@ const addLink = document.querySelector('.content__btn');
 const addWrapperPopup = document.querySelector('.add__wrapper_popup');
 const addExitLink = document.querySelector('.add__exit_link');
 const addWrapperDarkening = document.querySelector('.add__wrapper_darkening')
-const dataErrors = document.querySelector('#dataErrors')
+const dataErrorsCreate = document.querySelector('#dataErrorsCreate')
 
 addLink.addEventListener('click', function (){
     addWrapperPopup.classList.add('wrapper__popup_visible')
@@ -18,9 +18,9 @@ addExitLink.addEventListener('click', function (){
     document.querySelector('#articleCreateError').innerHTML = '';
 });
 
-if (dataErrors.dataset['createerrors'].length > 2) {
+if (dataErrorsCreate.dataset['createerrors'].length > 2) {
     addLink.click();
-    let errorCreate = JSON.parse(dataErrors.dataset['createerrors']);
+    let errorCreate = JSON.parse(dataErrorsCreate.dataset['createerrors']);
     let nameCreateError = document.querySelector('#nameCreateError');
     if (errorCreate['name']) {
         nameCreateError.innerHTML = errorCreate['name'][0];

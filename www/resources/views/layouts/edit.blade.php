@@ -8,8 +8,10 @@
             <input type="hidden" name="id" id="productEditId">
             <label for="article" class="add__label">{{ __('main.article') }}</label>
             <input type="text" class="add__input input-reset" id="productEditArticle" name="article" value="">
+            <span style="color: red" id="articleEditError"></span>
             <label for="name" class="add__label">{{ __('main.name') }}</label>
             <input type="text" class="add__input input-reset" id="productEditName" name="name" value="">
+            <span style="color: red" id="nameEditError"></span>
             <label for="status" class="add__label flex">{{ __('main.status') }}</label>
             <div class="dropdown">
                 <button class="dropdown__button" name="status" type="button" id="productEditStatusVisible"></button>

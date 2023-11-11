@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 /**
  * Class ProductController
@@ -71,6 +72,7 @@ class ProductController extends Controller
     public function edit (Request $request): RedirectResponse
     {
         $arrJson = [];
+        $id = $request->get('id');
         $obProduct = (new Product())
             ->where('id', (int) $request->get('id'))
             ->first()
@@ -85,12 +87,28 @@ class ProductController extends Controller
                 ];
             }
         }
-        $json = $arrJson ? json_encode($arrJson) : null;
+
+        $json = $arrJson ? json_encode($arrJson) : [];
+
+        $validator = Validator::make($request->all(), [
+            'name'      => ['required', 'min:10'],
+            'article'   => ['required', 'regex:/^[A-Za-z0-9]+$/', Rule::unique('products')->ignore($id)],
+        ]);
+
+        if (!empty($validator->errors()->messages())) {
+            $validator->errors()->add('id', $id);
+            $validator->errors()->add('productName', $request->name);
+            $validator->errors()->add('productArticle', $request->article);
+            $validator->errors()->add('productStatus', $request->status);
+            $validator->errors()->add('productData', $json);
+
+            return redirect(\App\Http\Controllers\PublicController::ROUTE_INDEX)->withErrors($validator, 'edit');
+        }
 
         $obProduct->article = $request->get('article');
         $obProduct->name = $request->get('name');
         $obProduct->status = $request->get('status');
-        $obProduct->data = $json ?? null;
+        $obProduct->data = $json ?? [];
         $obProduct->update();
 
         return redirect()->route(\App\Http\Controllers\PublicController::ROUTE_INDEX);
