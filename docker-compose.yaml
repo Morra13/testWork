@@ -15,6 +15,8 @@ services:
             - "./www:/var/www"
             - "./config/php/app.crontab:/etc/cron.d/app.crontab"
             - "./config/php/local.ini:/usr/local/etc/php/conf.d/local.ini"
+            - "./config/php/supervisord.conf:/etc/supervisor/supervisord.conf"
+            - "./config/supervisor:/etc/supervisor/conf.d"
         command: [ "/bin/bash", "/usr/local/bin/start" ]
     webserver:
         image: nginx:alpine

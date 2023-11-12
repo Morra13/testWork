@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendEmailCreateProductJob;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -59,6 +60,8 @@ class ProductController extends Controller
         $obProduct->status = $request->get('status');
         $obProduct->data = $json ?? null;
         $obProduct->save();
+
+        $this->dispatch(new SendEmailCreateProductJob($obProduct));
 
         return redirect(\App\Http\Controllers\PublicController::ROUTE_INDEX);
     }

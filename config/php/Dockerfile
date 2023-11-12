@@ -16,7 +16,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     nano \
     libpq-dev \
-    cron
+    cron \
+    supervisor
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -42,6 +43,8 @@ COPY --chown=www:www . /var/www
 
 COPY ./start.sh /usr/local/bin/start
 RUN chmod +x /usr/local/bin/start
+
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 
 # Cron config
 COPY ./app.crontab /etc/cron.d/app.crontab
