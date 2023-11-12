@@ -29,7 +29,7 @@ class AuthController extends Controller
             'password' => ['required', 'string']
         ]);
 
-        if (!Auth::attempt()) {
+        if (!Auth::attempt($validator->validate(), $request->boolean('remember'))) {
             $validator->errors()->add('mainAuthError', 'Вы не смогли авторизоваться пароль либо имейл не верен');
         }
 
