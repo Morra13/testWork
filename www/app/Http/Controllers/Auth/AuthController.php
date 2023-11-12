@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
@@ -23,15 +24,17 @@ class AuthController extends Controller
      */
     public function auth(Request $request)
     {
-        $credentials = $request->validate([
+        $validator = Validator::make($request->all(), [
             'email' => ['required', 'string', 'email'],
             'password' => ['required', 'string']
         ]);
 
-        if (!Auth::attempt($credentials, $request->boolean('remember'))) {
-            throw ValidationException::withMessages([
-                'email' => trans('auth.failed')
-            ]);
+        if (!Auth::attempt()) {
+            $validator->errors()->add('mainAuthError', 'Вы не смогли авторизоваться пароль либо имейл не верен');
+        }
+
+        if (!empty($validator->errors()->messages())) {
+            return redirect(\App\Http\Controllers\PublicController::ROUTE_INDEX)->withErrors($validator, 'auth');
         }
 
         $request->session()->regenerate();

@@ -1,7 +1,7 @@
 const addLink = document.querySelector('.content__btn');
-const addWrapperPopup = document.querySelector('.add__wrapper_popup');
-const addExitLink = document.querySelector('.add__exit_link');
-const addWrapperDarkening = document.querySelector('.add__wrapper_darkening')
+const addWrapperPopup = document.querySelector('#addWrapperPopup');
+const addExitLink = document.querySelector('#addExitLink');
+const addWrapperDarkening = document.querySelector('#addWrapperDarkening')
 const dataErrorsCreate = document.querySelector('#dataErrorsCreate')
 
 addLink.addEventListener('click', function (){

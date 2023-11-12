@@ -25,8 +25,8 @@
                     <a href="{{ route(\App\Http\Controllers\Auth\RegisterController::ROUTE_CHANGE_ROLE) }}" class="auth__btn">{{ __('main.be') .' ' . __('main.'. (auth()->user()->isAdmin() ? 'user' : 'admin')) }}</a>
                     <a href="{{ route(\App\Http\Controllers\Auth\AuthController::ROUTE_LOGOUT) }}" class="auth__btn">{{ __('main.logout') }}</a>
                 @else
-                    <a href="{{route(\App\Http\Controllers\PublicController::ROUTE_AUTH)}}" class="auth__btn" id="buttonAuth">{{ __('main.auth') }}</a>
-                    <a href="{{route(\App\Http\Controllers\PublicController::ROUTE_REGISTER)}}" class="auth__btn" id="buttonReg">{{ __('main.register') }}</a>
+                    <button class="auth__btn btn-reset" id="buttonAuth">{{ __('main.auth') }}</button>
+                    <button class="auth__btn btn-reset" id="buttonReg">{{ __('main.register') }}</button>
                 @endif
             </div>
         </div>
@@ -62,6 +62,8 @@
             </div>
         </section>
     </main>
+    @include('auth')
+    <input type="hidden" id="dataErrorsAuth" data-authErrors="{{$errors->auth}}">
     @include('layouts.add')
     <input type="hidden" id="dataErrorsCreate" data-createErrors="{{$errors->create}}">
     @include('layouts.check')

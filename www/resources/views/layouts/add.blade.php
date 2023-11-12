@@ -1,7 +1,7 @@
-<div class="add__wrapper_darkening">
-    <div class="add__wrapper_popup">
+<div id="addWrapperDarkening">
+    <div class="add__wrapper_popup" id="addWrapperPopup">
         <form method="post"  action="{{ route(\App\Http\Controllers\Api\ProductController::ROUTE_CREATE) }}" class="add__form flex">
-            <button type="button" class="add__exit_link btn-reset">
+            <button type="button" class="add__exit_link btn-reset" id="addExitLink">
                 <img src="{{ asset('storage') }}/img/exit.svg" alt="{{ __('main.exit') }}" class="add__exit">
             </button>
             <h2 class="add__title">{{ __('main.addProduct') }}</h2>
