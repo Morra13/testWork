@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -24,11 +25,15 @@ class RegisterController extends Controller
      */
     public function register (Request $request)
     {
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'unique:users'],
             'password' => ['required', 'min:6', 'confirmed'],
         ]);
+
+        if (!empty($validator->errors()->messages())) {
+            return redirect(\App\Http\Controllers\PublicController::ROUTE_INDEX)->withErrors($validator, 'reg');
+        }
 
         $user = User::create([
             'name' => $request->name,

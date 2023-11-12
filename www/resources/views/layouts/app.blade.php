@@ -21,7 +21,7 @@
     <script src="{{ asset('storage') }}/js/popupCheck.js?{{rand()}}"></script>
     <script src="{{ asset('storage') }}/js/popupEdit.js?{{rand()}}"></script>
     <script src="{{ asset('storage') }}/js/popupAuth.js?{{rand()}}"></script>
-    {{--    <script src="{{ asset('storage') }}/js/popupReg.js?{{rand()}}"></script>--}}
+    <script src="{{ asset('storage') }}/js/popupReg.js?{{rand()}}"></script>
     <script src="{{ asset('storage') }}/js/attribute.js?{{rand()}}"></script>
 </body>
 </html>

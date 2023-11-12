@@ -64,6 +64,8 @@
     </main>
     @include('auth')
     <input type="hidden" id="dataErrorsAuth" data-authErrors="{{$errors->auth}}">
+    @include('register')
+    <input type="hidden" id="dataErrorsReg" data-regErrors="{{$errors->reg}}">
     @include('layouts.add')
     <input type="hidden" id="dataErrorsCreate" data-createErrors="{{$errors->create}}">
     @include('layouts.check')
