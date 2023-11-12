@@ -10,12 +10,6 @@ class PublicController extends Controller
     /** @var string  */
     const ROUTE_INDEX = 'index';
 
-    /** @var string  */
-    const ROUTE_REGISTER = 'register';
-
-    /** @var string  */
-    const ROUTE_AUTH = 'auth';
-
     /**
      * Главная страница
      *
@@ -32,26 +26,6 @@ class PublicController extends Controller
                 'status' => $status,
             ]
         );
-    }
-
-    /**
-     * Страница регистрации
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function register ()
-    {
-        return view('register');
-    }
-
-    /**
-     * Страница авторизации
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function auth ()
-    {
-        return view('auth');
     }
 
 }

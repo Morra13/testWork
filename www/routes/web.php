@@ -16,5 +16,3 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 Route::get('/{status?}',    [PublicController::class, 'index'])     ->name(PublicController::ROUTE_INDEX);
-Route::get('/user/register',     [PublicController::class, 'register'])  ->name(PublicController::ROUTE_REGISTER);
-Route::get('/user/auth/',         [PublicController::class, 'auth'])      ->name(PublicController::ROUTE_AUTH);
